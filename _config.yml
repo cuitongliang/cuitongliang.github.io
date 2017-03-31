@@ -1,11 +1,11 @@
 # Basic
-title: GcsSloop
+title: Cui Tongliang
 subtitle: Just do IT later.
-welcome_message: 欢迎来到我的魔法世界! 
-description: 嗨，我是 GcsSloop，一名来自2.5次元的魔法师，Android自定义View系列文章作者，非著名程序员。
-creator: <a href="http://www.GcsSloop.com">@GcsSloop</a>
+welcome_message: 欢迎来到我的个人博客! 
+description: 嗨，我是澳客崔郎，一名来自未来的老年人，非著名程序员。
+creator: <a href="http://https://cuitongliang.github.io">@cuitongliang</a>
 
-url: "http://www.gcssloop.com"
+url: "https://cuitongliang.github.io"
 
 permalink: /:categories/:title
 
@@ -23,9 +23,9 @@ blog_button:
     description: 访问博客
 
 nav:
-    - {title: GitHub,     in_site: false,  description: GcsSloop's GitHub,    url: 'https://github.com/GcsSloop'}
+    - {title: GitHub,     in_site: false,  description: cuitongliang's GitHub,    url: 'https://github.com/cuitongliang'}
     - {title: 目录,        in_site: true,  description: 博客目录,               url: '/timeline'}
-    - {title: 关于,        in_site: true,  description: 关于作者 GcsSloop,       url: '/info/about'}
+    - {title: 关于,        in_site: true,  description: 关于作者 Cui Tongliang,       url: '/info/about'}
     
 
 
@@ -48,10 +48,10 @@ social:
     github: GcsSloop
     twitter: GcsSloop
     rss: /feed.xml
-    mail: GcsSloop@gmail.com
+    mail: cuitongliang@foxmail.com
     copyright: http://choosealicense.online
 
 # Google Analytics
 ga:
     id: UA-82493667-1
-    host: www.gcssloop.com
+    host: https://cuitongliang.github.io
