@@ -1,12 +1,38 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=0"><title>vux-spa-demo</title><script type=text/javascript>window.ConfigOBJ = {
-        host: "http://a.okooo.com",
-        //host: ""
-      };
-    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+---
+layout: default
+---
 
-  		ga('create', 'UA-yourID', 'auto')</script><link href=./static/css/app.8c8b1dedae8f979936daae913af15fc4.css rel=stylesheet></head><body>
-            
-            <div id=app-box></div><script type=text/javascript src=./static/js/manifest.d7b39bd774a030b97f9f.js></script><script type=text/javascript src=./static/js/vendor.ded9e1ef423861b70e0a.js></script><script type=text/javascript src=./static/js/app.e6684f79ed3979d72c5d.js></script></body></html>
+<div class="main-post-list hidden">
+
+  <ol class="post-list">
+    <!--置顶-->
+    {% for post in site.posts %}
+      {% if post.istop %}
+        {% if paginator.page == 1 %}
+        <li>
+          <h2 class="post-list__post-title post-title"><a href="{{ post.url }}" title="访问 {{ post.title }}">[置顶]{{ post.title }}</a></h2>
+          <p class="excerpt">{{ post.content | strip_html | strip_newlines | truncate: 260 }}&hellip;</p>
+          <div class="post-list__meta"><time datetime="{{post.date | date: date_to_xmlschema}}" class="post-list__meta--date date">{{ post.date | date: "%F"}}</time> &#8226; <span class="post-list__meta--tags tags">{{ post.category }}</span> <a class="btn-border-small" href={{ post.url }}>继续阅读</a></div>
+          <hr class="post-list__divider" />
+        </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <!--普通文档流-->
+    {% for post in paginator.posts %}
+    {% if post.hide %}
+    {% else %}
+      <li>
+        <h2 class="post-list__post-title post-title"><a href="{{ post.url }}" title="访问 {{ post.title }}">{{ post.title }}</a></h2>
+        <p class="excerpt">{{ post.content | strip_html | strip_newlines | truncate: 260 }}&hellip;</p>
+        <div class="post-list__meta"><time datetime="{{post.date | date: date_to_xmlschema}}" class="post-list__meta--date date">{{ post.date | date: "%F"}}</time> &#8226; <span class="post-list__meta--tags tags">{{ post.category }}</span> <a class="btn-border-small" href={{ post.url }}>继续阅读</a></div>
+        <hr class="post-list__divider" />
+      </li>
+    {% endif %}
+    {% endfor %}
+  </ol>
+
+  {% include pagination.html %}
+
+</div>
+
