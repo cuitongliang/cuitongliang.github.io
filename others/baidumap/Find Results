@@ -1,0 +1,886 @@
+Searching 39 files for "http"
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/busSearch.html:
+   21  	
+   22  	$(document).ready(function(){
+   23: 		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+   24  		//初始化隐藏地图
+   25  		$("#busSearchMap").hide();
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/cordova-1.9.0.js:
+   12   with the License.  You may obtain a copy of the License at
+   13   
+   14:      http://www.apache.org/licenses/LICENSE-2.0
+   15   
+   16   Unless required by applicable law or agreed to in writing,
+   ..
+ 2397   *
+ 2398   * @param file          {File} File object containing file properties
+ 2399:  * @param encoding      [Optional] (see http://www.iana.org/assignments/character-sets)
+ 2400   */
+ 2401  FileReader.prototype.readAsText = function(file, encoding) {
+ ....
+ 2621  /**
+ 2622  * Given an absolute file path, uploads a file on the device to a remote server
+ 2623: * using a multipart HTTP request.
+ 2624  * @param filePath {String}           Full path of the file on the device
+ 2625  * @param server {String}             URL of the server to receive the file
+ ....
+ 2654  
+ 2655      var fail = function(e) {
+ 2656:         var error = new FileTransferError(e.code, e.source, e.target, e.http_status);
+ 2657          errorCallback(error);
+ 2658      };
+ ....
+ 2687  
+ 2688      var fail = function(e) {
+ 2689:         var error = new FileTransferError(e.code, e.source, e.target, e.http_status);
+ 2690          errorCallback(error);
+ 2691      };
+ ....
+ 2708      this.source = source || null;
+ 2709      this.target = target || null;
+ 2710:     this.http_status = status || null;
+ 2711  };
+ 2712  
+ ....
+ 2722  define("cordova/plugin/FileUploadOptions", function(require, exports, module) {
+ 2723  /**
+ 2724:  * Options to customize the HTTP request used to upload files.
+ 2725   * @constructor
+ 2726   * @param fileKey {String}   Name of file request parameter.
+ ....
+ 3625     *
+ 3626     * Example:
+ 3627:    *      navigator.app.loadUrl("http://server/myapp/index.html", {wait:2000, loadingDialog:"Wait,Loading App", loadUrlTimeoutValue: 60000});
+ 3628     */
+ 3629    loadUrl:function(url, props) {
+ ....
+ 3694        }
+ 3695  
+ 3696:       var xmlhttp = new XMLHttpRequest();
+ 3697  
+ 3698:       // Callback function when XMLHttpRequest is ready
+ 3699:       xmlhttp.onreadystatechange=function(){
+ 3700:           if(xmlhttp.readyState === 4){
+ 3701  
+ 3702                // Exit if shutting down app
+ ....
+ 3706  
+ 3707                // If callback has JavaScript statement to execute
+ 3708:               if (xmlhttp.status === 200) {
+ 3709  
+ 3710                    // Need to url decode the response
+ 3711:                   var msg = decodeURIComponent(xmlhttp.responseText);
+ 3712                    setTimeout(function() {
+ 3713                        try {
+ ....
+ 3724  
+ 3725                // If callback ping (used to keep XHR request from timing out)
+ 3726:               else if (xmlhttp.status === 404) {
+ 3727                    setTimeout(callback, 10);
+ 3728                }
+ 3729  
+ 3730                // If security error
+ 3731:               else if (xmlhttp.status === 403) {
+ 3732                    console.log("JSCallback Error: Invalid token.  Stopping callbacks.");
+ 3733                }
+ 3734  
+ 3735                // If server is stopping
+ 3736:               else if (xmlhttp.status === 503) {
+ 3737                    console.log("JSCallback Server Closed: Stopping callbacks.");
+ 3738                }
+ 3739  
+ 3740                // If request wasn't GET
+ 3741:               else if (xmlhttp.status === 400) {
+ 3742                    console.log("JSCallback Error: Bad request.  Stopping callbacks.");
+ 3743                }
+ ....
+ 3758            token = prompt("getToken", "gap_callbackServer:");
+ 3759        }
+ 3760:       xmlhttp.open("GET", "http://127.0.0.1:"+port+"/"+token , true);
+ 3761:       xmlhttp.send();
+ 3762  };
+ 3763  
+ ....
+ 5627   *
+ 5628   * for rationale, see FireBug's Console API:
+ 5629:  *    http://getfirebug.com/wiki/index.php/Console_API
+ 5630   */
+ 5631  utils.vformat = function(formatString, args) {
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/drivingSearch.html:
+   21  	
+   22  	$(document).ready(function(){
+   23: 		head.js("https://api.map.baidu.com/api?v=1.2&callback=initialize");
+   24  		//初始化隐藏地图
+   25  		$("#drivingSearchMap").hide();
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/head.js:
+    2      Head JS     The only script in your <HEAD>
+    3      Copyright   Tero Piirainen (tipiirai)
+    4:     License     MIT / http://bit.ly/mit-license
+    5      Version     0.96
+    6  
+    7:     http://headjs.com
+    8  */
+    9  (function(doc) {
+   ..
+  157      Head JS     The only script in your <HEAD>
+  158      Copyright   Tero Piirainen (tipiirai)
+  159:     License     MIT / http://bit.ly/mit-license
+  160      Version     0.96
+  161  
+  162:     http://headjs.com
+  163  */
+  164  (function() {
+  ...
+  173          Good place to grab more tests
+  174  
+  175:         https://github.com/Modernizr/Modernizr/blob/master/modernizr.js
+  176      */
+  177  
+  ...
+  260              font-face support. Uses browser sniffing but is synchronous.
+  261  
+  262:             http://paulirish.com/2009/font-face-feature-detection/
+  263          */
+  264          fontface: function() {
+  ...
+  297      Head JS     The only script in your <HEAD>
+  298      Copyright   Tero Piirainen (tipiirai)
+  299:     License     MIT / http://bit.ly/mit-license
+  300      Version     0.96
+  301  
+  302:     http://headjs.com
+  303  */
+  304  (function(doc) {
+  ...
+  599      /*
+  600          The much desired DOM ready check
+  601:         Thanks to jQuery and http://javascript.nwbox.com/IEContentLoaded/
+  602      */
+  603  
+  ...
+  670          to make sure scripts are cached. Not sure why this happens yet. A case study:
+  671  
+  672:         https://github.com/headjs/headjs/issues/closed#issue/83
+  673      */
+  674      setTimeout(function() {
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/index.html:
+   17  <script type="text/javascript">
+   18  	$(document).ready(function(){
+   19: 		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+   20  		bindGetlocation();
+   21  	});
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.js:
+    1  /*!
+    2   * jQuery JavaScript Library v1.7.1
+    3:  * http://jquery.com/
+    4   *
+    5   * Copyright 2011, John Resig
+    6   * Dual licensed under the MIT or GPL Version 2 licenses.
+    7:  * http://jquery.org/license
+    8   *
+    9   * Includes Sizzle.js
+   10:  * http://sizzlejs.com/
+   11   * Copyright 2011, The Dojo Foundation
+   12   * Released under the MIT, BSD, and GPL Licenses.
+   ..
+  567  
+  568  		// Make sure the incoming data is actual JSON
+  569: 		// Logic borrowed from http://json.org/json2.js
+  570  		if ( rvalidchars.test( data.replace( rvalidescape, "@" )
+  571  			.replace( rvalidtokens, "]" )
+  ...
+  603  	// Evaluates a script in a global context
+  604  	// Workarounds based on findings by Jim Driscoll
+  605: 	// http://weblogs.java.net/blog/driscoll/archive/2009/09/08/eval-javascript-global-context
+  606  	globalEval: function( data ) {
+  607  		if ( data && rnotwhite.test( data ) ) {
+  ...
+  855  
+  856  	// Use of jQuery.browser is frowned upon.
+  857: 	// More details: http://docs.jquery.com/Utilities/jQuery.browser
+  858  	uaMatch: function( ua ) {
+  859  		ua = ua.toLowerCase();
+  ...
+  942  	try {
+  943  		// If IE is used, use the trick by Diego Perini
+  944: 		// http://javascript.nwbox.com/IEContentLoaded/
+  945  		document.documentElement.doScroll("left");
+  946  	} catch(e) {
+  ...
+ 1489  
+ 1490  	// Technique from Juriy Zaytsev
+ 1491: 	// http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
+ 1492  	// We only care about the case where non-standard event systems
+ 1493  	// are used, namely in IE. Short-circuiting here helps us to
+ 1494  	// avoid an eval call (in setAttribute) which can cause CSP
+ 1495: 	// to go haywire. See: https://developer.mozilla.org/en/Security/CSP
+ 1496  	if ( div.attachEvent ) {
+ 1497  		for( i in {
+ ....
+ 2100  	},
+ 2101  	// Based off of the plugin by Clint Helfers, with permission.
+ 2102: 	// http://blindsignals.com/index.php/2009/07/jquery-delay/
+ 2103  	delay: function( time, type ) {
+ 2104  		time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
+ ....
+ 2625  			get: function( elem ) {
+ 2626  				// elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
+ 2627: 				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+ 2628  				var attributeNode = elem.getAttributeNode("tabindex");
+ 2629  
+ ....
+ 3471  
+ 3472  // jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
+ 3473: // http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
+ 3474  jQuery.Event.prototype = {
+ 3475  	preventDefault: function() {
+ ....
+ 3854   *  Copyright 2011, The Dojo Foundation
+ 3855   *  Released under the MIT, BSD, and GPL Licenses.
+ 3856:  *  More information: http://sizzlejs.com/
+ 3857   */
+ 3858  (function(){
+ ....
+ 6190  }
+ 6191  
+ 6192: // Derived From: http://www.iecss.com/shimprove/javascript/shimprove.1-0-1.js
+ 6193  function shimCloneNode( elem ) {
+ 6194  	var div = document.createElement( "div" );
+ ....
+ 6735  
+ 6736  		// From the awesome hack by Dean Edwards
+ 6737: 		// http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
+ 6738  
+ 6739  		// If we're not dealing with a regular pixel number
+ ....
+ 7458  			s.crossDomain = !!( parts &&
+ 7459  				( parts[ 1 ] != ajaxLocParts[ 1 ] || parts[ 2 ] != ajaxLocParts[ 2 ] ||
+ 7460: 					( parts[ 3 ] || ( parts[ 1 ] === "http:" ? 80 : 443 ) ) !=
+ 7461: 						( ajaxLocParts[ 3 ] || ( ajaxLocParts[ 1 ] === "http:" ? 80 : 443 ) ) )
+ 7462  			);
+ 7463  		}
+ ....
+ 8011  function createStandardXHR() {
+ 8012  	try {
+ 8013: 		return new window.XMLHttpRequest();
+ 8014  	} catch( e ) {}
+ 8015  }
+ ....
+ 8017  function createActiveXHR() {
+ 8018  	try {
+ 8019: 		return new window.ActiveXObject( "Microsoft.XMLHTTP" );
+ 8020  	} catch( e ) {}
+ 8021  }
+ ....
+ 8025  jQuery.ajaxSettings.xhr = window.ActiveXObject ?
+ 8026  	/* Microsoft failed to properly
+ 8027: 	 * implement the XMLHttpRequest in IE7 (can't request local files),
+ 8028  	 * so we use the ActiveXObject when it is available
+ 8029: 	 * Additionally XMLHttpRequest can be disabled in IE7/IE8 so
+ 8030  	 * we need a fallback.
+ 8031  	 */
+ ....
+ 8033  		return !this.isLocal && createStandardXHR() || createActiveXHR();
+ 8034  	} :
+ 8035: 	// For all other browsers, use the standard XMLHttpRequest object
+ 8036  	createStandardXHR;
+ 8037  
+ ....
+ 8048  
+ 8049  	jQuery.ajaxTransport(function( s ) {
+ 8050: 		// Cross domain only allowed if supported through XMLHttpRequest
+ 8051  		if ( !s.crossDomain || jQuery.support.cors ) {
+ 8052  
+ ....
+ 8087  					// For same-domain requests, won't change header if already provided.
+ 8088  					if ( !s.crossDomain && !headers["X-Requested-With"] ) {
+ 8089: 						headers[ "X-Requested-With" ] = "XMLHttpRequest";
+ 8090  					}
+ 8091  
+ ....
+ 8113  						// Firefox throws exceptions when accessing properties
+ 8114  						// of an xhr when a network error occured
+ 8115: 						// http://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
+ 8116  						try {
+ 8117  
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile-1.1.1.css:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+   ..
+ 2008  /*listbox*/
+ 2009  .ui-select .ui-btn-text, .ui-selectmenu .ui-btn-text { display: block; min-height: 1em; overflow: hidden !important;
+ 2010: /* This !important is required for iPad Safari specifically. See https://github.com/jquery/jquery-mobile/issues/2647 */ }
+ 2011  .ui-select .ui-btn-text { text-overflow: ellipsis; }
+ 2012  .ui-selectmenu { position: absolute; padding: 0; z-index: 1100 !important; width: 80%; max-width: 350px; padding: 6px; }
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile-1.1.1.js:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+   ..
+   84  
+   85  	// addresses separation of $.event.props in to $.event.mouseHook.props and Issue 3280
+   86: 	// https://github.com/jquery/jquery-mobile/issues/3280
+   87  	if ( t.search( /^(mouse|click)/ ) > -1 ) {
+   88  		props = mouseEventProps;
+   ..
+  528  // *Version: 1.3, Last updated: 7/21/2010*
+  529  // 
+  530: // Project Home - http://benalman.com/projects/jquery-hashchange-plugin/
+  531: // GitHub       - http://github.com/cowboy/jquery-hashchange/
+  532: // Source       - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.js
+  533: // (Minified)   - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.min.js (0.8kb gzipped)
+  534  // 
+  535  // About: License
+  ...
+  537  // Copyright (c) 2010 "Cowboy" Ben Alman,
+  538  // Dual licensed under the MIT and GPL licenses.
+  539: // http://benalman.com/about/license/
+  540  // 
+  541  // About: Examples
+  ...
+  544  // ways in which this plugin can be used.
+  545  // 
+  546: // hashchange event - http://benalman.com/code/projects/jquery-hashchange/examples/hashchange/
+  547: // document.domain - http://benalman.com/code/projects/jquery-hashchange/examples/document_domain/
+  548  // 
+  549  // About: Support and Testing
+  ...
+  556  // Browsers Tested - Internet Explorer 6-8, Firefox 2-4, Chrome 5-6, Safari 3.2-5,
+  557  //                   Opera 9.6-10.60, iPhone 3.1, Android 1.6-2.2, BlackBerry 4.6-5.
+  558: // Unit Tests      - http://benalman.com/code/projects/jquery-hashchange/unit/
+  559  // 
+  560  // About: Known issues
+  ...
+  566  // information:
+  567  // 
+  568: // Chrome: Back Button - http://benalman.com/code/projects/jquery-hashchange/examples/bug-chrome-back-button/
+  569: // Firefox: Remote XMLHttpRequest - http://benalman.com/code/projects/jquery-hashchange/examples/bug-firefox-remote-xhr/
+  570: // WebKit: Back Button in an Iframe - http://benalman.com/code/projects/jquery-hashchange/examples/bug-webkit-hash-iframe/
+  571: // Safari: Back Button from a different domain - http://benalman.com/code/projects/jquery-hashchange/examples/bug-safari-back-from-diff-domain/
+  572  // 
+  573  // Also note that should a browser natively support the window.onhashchange 
+  ...
+  579  //         "removable" for mobile-only development. Added IE6/7 document.title
+  580  //         support. Attempted to make Iframe as hidden as possible by using
+  581: //         techniques from http://www.paciellogroup.com/blog/?p=604. Added 
+  582  //         support for the "shortcut" format $(window).hashchange( fn ) and
+  583  //         $(window).hashchange() like jQuery provides for built-in events.
+  ...
+  827            
+  828            // Create hidden Iframe. Attempt to make Iframe as hidden as possible
+  829:           // by using techniques from http://www.paciellogroup.com/blog/?p=604.
+  830            iframe = $('<iframe tabindex="-1" title="empty"/>').hide()
+  831              
+  ...
+  907   * jQuery UI Widget @VERSION
+  908   *
+  909:  * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+  910   * Dual licensed under the MIT or GPL Version 2 licenses.
+  911:  * http://jquery.org/license
+  912   *
+  913:  * http://docs.jquery.com/UI/Widget
+  914   */
+  915  
+  ...
+ 1415  		//
+ 1416  		// Find the closest javascript page element to gather settings data jsperf test
+ 1417: 		// http://jsperf.com/single-complex-selector-vs-many-complex-selectors/edit
+ 1418  		// possibly naive, but it shows that the parsing overhead for *just* the page selector vs
+ 1419  		// the page and dialog selector is negligable. This could probably be speed up by
+ ....
+ 1704  
+ 1705  
+ 1706: // non-UA-based IE version check by James Padolsey, modified by jdalton - from http://gist.github.com/527683
+ 1707  // allows for inclusion of IE 6+, including Windows Mobile 7
+ 1708  $.extend( $.mobile, { browser: {} } );
+ ....
+ 1739  
+ 1740  // $.mobile.ajaxBlacklist is used to override ajaxEnabled on platforms that have known conflicts with hash history updates (BB5, Symbian)
+ 1741: // or that generally work better browsing in regular http for full page refreshes (Opera Mini)
+ 1742  // Note: This detection below is used as a last resort.
+ 1743  // We recommend only using these detection methods when all other more reliable/forward-looking approaches are not possible
+ ....
+ 2367  			// or String.match, it parses the URL into a results array that looks like this:
+ 2368  			//
+ 2369: 			//     [0]: http://jblas:password@mycompany.com:8080/mail/inbox?msg=1234&type=unread#msg-content
+ 2370: 			//     [1]: http://jblas:password@mycompany.com:8080/mail/inbox?msg=1234&type=unread
+ 2371: 			//     [2]: http://jblas:password@mycompany.com:8080/mail/inbox
+ 2372: 			//     [3]: http://jblas:password@mycompany.com:8080
+ 2373: 			//     [4]: http:
+ 2374  			//     [5]: //
+ 2375  			//     [6]: jblas:password@mycompany.com:8080
+ ....
+ 2605  			// This is usually to allow the application to "phone home" and fetch app specific
+ 2606  			// data. We normally let the browser handle external/cross-domain urls, but if the
+ 2607: 			// allowCrossDomainPages option is true, we will allow cross-domain http/https
+ 2608  			// requests to go through our page loading logic.
+ 2609  			isPermittedCrossDomainRequest: function( docUrl, reqUrl ) {
+ 2610  				return $.mobile.allowCrossDomainPages
+ 2611  					&& docUrl.protocol === "file:"
+ 2612: 					&& reqUrl.search( /^https?:/ ) != -1;
+ 2613  			}
+ 2614  		},
+ ....
+ 3475  				// itself to avoid ie bug that reports offsetWidth as > 0 (core check for visibility)
+ 3476  				// despite visibility: hidden addresses issue #2965
+ 3477: 				// https://github.com/jquery/jquery-mobile/issues/2965
+ 3478  				if( !alreadyFocused ){
+ 3479  					$.mobile.focusPage( toPage );
+ ....
+ 3617  		});
+ 3618  
+ 3619: 		// click routing - direct to HTTP or Ajax, accordingly
+ 3620  		$( document ).bind( "click", function( event ) {
+ 3621  			if( !$.mobile.linkBindingEnabled ){
+ ....
+ 3623  			}
+ 3624  
+ 3625: 			var link = findClosestLink( event.target ), $link = $( link ), httpCleanup;
+ 3626  
+ 3627  			// If there is no link associated with the click or its not a left
+ ....
+ 3634  
+ 3635  			//remove active link class if external (then it won't be there if you come back)
+ 3636: 			httpCleanup = function(){
+ 3637  				window.setTimeout( function() { removeActiveLinkClass( true ); }, 200 );
+ 3638  			};
+ ....
+ 3651  			//if ajax is disabled, exit early
+ 3652  			if( !$.mobile.ajaxEnabled && !path.isEmbeddedPage( href ) ){
+ 3653: 				httpCleanup();
+ 3654  				//use default click handling
+ 3655  				return;
+ ....
+ 3688  				// This is usually to allow the application to "phone home" and fetch app specific
+ 3689  				// data. We normally let the browser handle external/cross-domain urls, but if the
+ 3690: 				// allowCrossDomainPages option is true, we will allow cross-domain http/https
+ 3691  				// requests to go through our page loading logic.
+ 3692  
+ ....
+ 3697  
+ 3698  			if( isExternal ) {
+ 3699: 				httpCleanup();
+ 3700  				//use default click handling
+ 3701  				return;
+ ....
+ 4878  //Keeps track of the number of lists per page UID
+ 4879  //This allows support for multiple nested list in the same page
+ 4880: //https://github.com/jquery/jquery-mobile/issues/1617
+ 4881  var listCountPerPage = {};
+ 4882  
+ ....
+ 5515  		}
+ 5516  
+ 5517: 		// TODO: Post 1.1--once we have time to test thoroughly--any classes manually applied to the original element should be carried over to the enhanced element, with an `-enhanced` suffix. See https://github.com/jquery/jquery-mobile/issues/3577
+ 5518  		/* if( $el[0].className.length ) {
+ 5519  			classes = $el[0].className;
+ ....
+ 6433  	_preExtension: function(){
+ 6434  		var classes = "";
+ 6435: 		// TODO: Post 1.1--once we have time to test thoroughly--any classes manually applied to the original element should be carried over to the enhanced element, with an `-enhanced` suffix. See https://github.com/jquery/jquery-mobile/issues/3577
+ 6436  		/* if( $el[0].className.length ) {
+ 6437  			classes = $el[0].className;
+ ....
+ 7502  
+ 7503  	// override ajaxEnabled on platforms that have known conflicts with hash history updates
+ 7504: 	// or generally work better browsing in regular http for full page refreshes (BB5, Opera Mini)
+ 7505  	if ( $.mobile.ajaxBlacklist ) {
+ 7506  		$.mobile.ajaxEnabled = false;
+ ....
+ 7675  			// IE and Opera don't support CSS pointer-events: none that we use to disable link-based buttons
+ 7676  			// by adding the 'ui-disabled' class to them. Using a JavaScript workaround for those browser.
+ 7677: 			// https://github.com/jquery/jquery-mobile/issues/3558
+ 7678  
+ 7679  			$( document ).delegate( ".ui-disabled", "vclick",
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile-1.1.1.min.js:
+   49  return m.stripHash(a).replace(/[^\/]*\.[^\/*]+$/,"")},getFilePath:function(b){var c="&"+a.mobile.subPageUrlKey;return b&&b.split(c)[0].split(s)[0]},set:function(a){location.hash=a},isPath:function(a){return/\//.test(a)},clean:function(a){return a.replace(w.domain,"")},stripHash:function(a){return a.replace(/^#/,"")},cleanHash:function(a){return m.stripHash(a.replace(/\?.*$/,"").replace(s,""))},isHashValid:function(a){return/^#[^#]+$/.test(a)},isExternal:function(a){a=m.parseUrl(a);return a.protocol&&
+   50  a.domain!==x.domain?true:false},hasProtocol:function(a){return/^(:?\w+:)/.test(a)},isFirstPageUrl:function(b){var b=m.parseUrl(m.makeUrlAbsolute(b,w)),d=a.mobile.firstPage,d=d&&d[0]?d[0].id:c;return(b.hrefNoHash===x.hrefNoHash||D&&b.hrefNoHash===w.hrefNoHash)&&(!b.hash||b.hash==="#"||d&&b.hash.replace(/^#/,"")===d)},isEmbeddedPage:function(a){a=m.parseUrl(a);return a.protocol!==""?a.hash&&(a.hrefNoHash===x.hrefNoHash||D&&a.hrefNoHash===w.hrefNoHash):/^#/.test(a.href)},isPermittedCrossDomainRequest:function(b,
+   51: c){return a.mobile.allowCrossDomainPages&&b.protocol==="file:"&&c.search(/^https?:/)!=-1}},l=null,n={stack:[],activeIndex:0,getActive:function(){return n.stack[n.activeIndex]},getPrev:function(){return n.stack[n.activeIndex-1]},getNext:function(){return n.stack[n.activeIndex+1]},addNew:function(a,b,c,d,e){n.getNext()&&n.clearForward();n.stack.push({url:a,transition:b,title:c,pageUrl:d,role:e});n.activeIndex=n.stack.length-1},clearForward:function(){n.stack=n.stack.slice(0,n.activeIndex+1)},directHashChange:function(b){var d,
+   52  e,f;this.getActive();a.each(n.stack,function(a,c){b.currentUrl===c.url&&(d=a<n.activeIndex,e=!d,f=a)});this.activeIndex=f!==c?f:this.activeIndex;d?(b.either||b.isBack)(true):e&&(b.either||b.isForward)(false)},ignoreNextHashChange:false},r=[],p=false,s="&ui-state=dialog",u=o.children("base"),x=m.parseUrl(location.href),w=u.length?m.parseUrl(m.makeUrlAbsolute(u.attr("href"),x.href)):x,D=x.hrefNoHash!==w.hrefNoHash,y=a.mobile.getScreenHeight,B=a.support.dynamicBaseTag?{element:u.length?u:a("<base>",
+   53  {href:w.hrefNoHash}).prependTo(o),set:function(a){B.element.attr("href",m.makeUrlAbsolute(a,w))},reset:function(){B.element.attr("href",w.hrefNoHash)}}:c;a.mobile.focusPage=function(a){var b=a.find("[autofocus]"),c=a.find(".ui-title:eq(0)");b.length?b.focus():c.length?c.focus():a.focus()};var C=true,z,A;z=function(){if(C){var b=a.mobile.urlHistory.getActive();if(b){var c=q.scrollTop();b.lastScroll=c<a.mobile.minScrollBack?a.mobile.defaultHomeScroll:c}}};A=function(){setTimeout(z,100)};q.bind(a.support.pushState?
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile.structure-1.1.1.css:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile.theme-1.1.1.css:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/walkingSearch.html:
+   21  	
+   22  	$(document).ready(function(){
+   23: 		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+   24  		//初始化隐藏地图
+   25  		$("#walkingSearchMap").hide();
+
+115 matches across 12 files
+
+
+Searching 39 files for "http://"
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/busSearch.html:
+   21  	
+   22  	$(document).ready(function(){
+   23: 		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+   24  		//初始化隐藏地图
+   25  		$("#busSearchMap").hide();
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/cordova-1.9.0.js:
+   12   with the License.  You may obtain a copy of the License at
+   13   
+   14:      http://www.apache.org/licenses/LICENSE-2.0
+   15   
+   16   Unless required by applicable law or agreed to in writing,
+   ..
+ 2397   *
+ 2398   * @param file          {File} File object containing file properties
+ 2399:  * @param encoding      [Optional] (see http://www.iana.org/assignments/character-sets)
+ 2400   */
+ 2401  FileReader.prototype.readAsText = function(file, encoding) {
+ ....
+ 3625     *
+ 3626     * Example:
+ 3627:    *      navigator.app.loadUrl("http://server/myapp/index.html", {wait:2000, loadingDialog:"Wait,Loading App", loadUrlTimeoutValue: 60000});
+ 3628     */
+ 3629    loadUrl:function(url, props) {
+ ....
+ 3758            token = prompt("getToken", "gap_callbackServer:");
+ 3759        }
+ 3760:       xmlhttp.open("GET", "http://127.0.0.1:"+port+"/"+token , true);
+ 3761        xmlhttp.send();
+ 3762  };
+ ....
+ 5627   *
+ 5628   * for rationale, see FireBug's Console API:
+ 5629:  *    http://getfirebug.com/wiki/index.php/Console_API
+ 5630   */
+ 5631  utils.vformat = function(formatString, args) {
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/head.js:
+    2      Head JS     The only script in your <HEAD>
+    3      Copyright   Tero Piirainen (tipiirai)
+    4:     License     MIT / http://bit.ly/mit-license
+    5      Version     0.96
+    6  
+    7:     http://headjs.com
+    8  */
+    9  (function(doc) {
+   ..
+  157      Head JS     The only script in your <HEAD>
+  158      Copyright   Tero Piirainen (tipiirai)
+  159:     License     MIT / http://bit.ly/mit-license
+  160      Version     0.96
+  161  
+  162:     http://headjs.com
+  163  */
+  164  (function() {
+  ...
+  260              font-face support. Uses browser sniffing but is synchronous.
+  261  
+  262:             http://paulirish.com/2009/font-face-feature-detection/
+  263          */
+  264          fontface: function() {
+  ...
+  297      Head JS     The only script in your <HEAD>
+  298      Copyright   Tero Piirainen (tipiirai)
+  299:     License     MIT / http://bit.ly/mit-license
+  300      Version     0.96
+  301  
+  302:     http://headjs.com
+  303  */
+  304  (function(doc) {
+  ...
+  599      /*
+  600          The much desired DOM ready check
+  601:         Thanks to jQuery and http://javascript.nwbox.com/IEContentLoaded/
+  602      */
+  603  
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/index.html:
+   17  <script type="text/javascript">
+   18  	$(document).ready(function(){
+   19: 		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+   20  		bindGetlocation();
+   21  	});
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.js:
+    1  /*!
+    2   * jQuery JavaScript Library v1.7.1
+    3:  * http://jquery.com/
+    4   *
+    5   * Copyright 2011, John Resig
+    6   * Dual licensed under the MIT or GPL Version 2 licenses.
+    7:  * http://jquery.org/license
+    8   *
+    9   * Includes Sizzle.js
+   10:  * http://sizzlejs.com/
+   11   * Copyright 2011, The Dojo Foundation
+   12   * Released under the MIT, BSD, and GPL Licenses.
+   ..
+  567  
+  568  		// Make sure the incoming data is actual JSON
+  569: 		// Logic borrowed from http://json.org/json2.js
+  570  		if ( rvalidchars.test( data.replace( rvalidescape, "@" )
+  571  			.replace( rvalidtokens, "]" )
+  ...
+  603  	// Evaluates a script in a global context
+  604  	// Workarounds based on findings by Jim Driscoll
+  605: 	// http://weblogs.java.net/blog/driscoll/archive/2009/09/08/eval-javascript-global-context
+  606  	globalEval: function( data ) {
+  607  		if ( data && rnotwhite.test( data ) ) {
+  ...
+  855  
+  856  	// Use of jQuery.browser is frowned upon.
+  857: 	// More details: http://docs.jquery.com/Utilities/jQuery.browser
+  858  	uaMatch: function( ua ) {
+  859  		ua = ua.toLowerCase();
+  ...
+  942  	try {
+  943  		// If IE is used, use the trick by Diego Perini
+  944: 		// http://javascript.nwbox.com/IEContentLoaded/
+  945  		document.documentElement.doScroll("left");
+  946  	} catch(e) {
+  ...
+ 1489  
+ 1490  	// Technique from Juriy Zaytsev
+ 1491: 	// http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
+ 1492  	// We only care about the case where non-standard event systems
+ 1493  	// are used, namely in IE. Short-circuiting here helps us to
+ ....
+ 2100  	},
+ 2101  	// Based off of the plugin by Clint Helfers, with permission.
+ 2102: 	// http://blindsignals.com/index.php/2009/07/jquery-delay/
+ 2103  	delay: function( time, type ) {
+ 2104  		time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
+ ....
+ 2625  			get: function( elem ) {
+ 2626  				// elem.tabIndex doesn't always return the correct value when it hasn't been explicitly set
+ 2627: 				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+ 2628  				var attributeNode = elem.getAttributeNode("tabindex");
+ 2629  
+ ....
+ 3471  
+ 3472  // jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
+ 3473: // http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
+ 3474  jQuery.Event.prototype = {
+ 3475  	preventDefault: function() {
+ ....
+ 3854   *  Copyright 2011, The Dojo Foundation
+ 3855   *  Released under the MIT, BSD, and GPL Licenses.
+ 3856:  *  More information: http://sizzlejs.com/
+ 3857   */
+ 3858  (function(){
+ ....
+ 6190  }
+ 6191  
+ 6192: // Derived From: http://www.iecss.com/shimprove/javascript/shimprove.1-0-1.js
+ 6193  function shimCloneNode( elem ) {
+ 6194  	var div = document.createElement( "div" );
+ ....
+ 6735  
+ 6736  		// From the awesome hack by Dean Edwards
+ 6737: 		// http://erik.eae.net/archives/2007/07/27/18.54.15/#comment-102291
+ 6738  
+ 6739  		// If we're not dealing with a regular pixel number
+ ....
+ 8113  						// Firefox throws exceptions when accessing properties
+ 8114  						// of an xhr when a network error occured
+ 8115: 						// http://helpful.knobs-dials.com/index.php/Component_returned_failure_code:_0x80040111_(NS_ERROR_NOT_AVAILABLE)
+ 8116  						try {
+ 8117  
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile-1.1.1.css:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile-1.1.1.js:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+   ..
+  528  // *Version: 1.3, Last updated: 7/21/2010*
+  529  // 
+  530: // Project Home - http://benalman.com/projects/jquery-hashchange-plugin/
+  531: // GitHub       - http://github.com/cowboy/jquery-hashchange/
+  532: // Source       - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.js
+  533: // (Minified)   - http://github.com/cowboy/jquery-hashchange/raw/master/jquery.ba-hashchange.min.js (0.8kb gzipped)
+  534  // 
+  535  // About: License
+  ...
+  537  // Copyright (c) 2010 "Cowboy" Ben Alman,
+  538  // Dual licensed under the MIT and GPL licenses.
+  539: // http://benalman.com/about/license/
+  540  // 
+  541  // About: Examples
+  ...
+  544  // ways in which this plugin can be used.
+  545  // 
+  546: // hashchange event - http://benalman.com/code/projects/jquery-hashchange/examples/hashchange/
+  547: // document.domain - http://benalman.com/code/projects/jquery-hashchange/examples/document_domain/
+  548  // 
+  549  // About: Support and Testing
+  ...
+  556  // Browsers Tested - Internet Explorer 6-8, Firefox 2-4, Chrome 5-6, Safari 3.2-5,
+  557  //                   Opera 9.6-10.60, iPhone 3.1, Android 1.6-2.2, BlackBerry 4.6-5.
+  558: // Unit Tests      - http://benalman.com/code/projects/jquery-hashchange/unit/
+  559  // 
+  560  // About: Known issues
+  ...
+  566  // information:
+  567  // 
+  568: // Chrome: Back Button - http://benalman.com/code/projects/jquery-hashchange/examples/bug-chrome-back-button/
+  569: // Firefox: Remote XMLHttpRequest - http://benalman.com/code/projects/jquery-hashchange/examples/bug-firefox-remote-xhr/
+  570: // WebKit: Back Button in an Iframe - http://benalman.com/code/projects/jquery-hashchange/examples/bug-webkit-hash-iframe/
+  571: // Safari: Back Button from a different domain - http://benalman.com/code/projects/jquery-hashchange/examples/bug-safari-back-from-diff-domain/
+  572  // 
+  573  // Also note that should a browser natively support the window.onhashchange 
+  ...
+  579  //         "removable" for mobile-only development. Added IE6/7 document.title
+  580  //         support. Attempted to make Iframe as hidden as possible by using
+  581: //         techniques from http://www.paciellogroup.com/blog/?p=604. Added 
+  582  //         support for the "shortcut" format $(window).hashchange( fn ) and
+  583  //         $(window).hashchange() like jQuery provides for built-in events.
+  ...
+  827            
+  828            // Create hidden Iframe. Attempt to make Iframe as hidden as possible
+  829:           // by using techniques from http://www.paciellogroup.com/blog/?p=604.
+  830            iframe = $('<iframe tabindex="-1" title="empty"/>').hide()
+  831              
+  ...
+  907   * jQuery UI Widget @VERSION
+  908   *
+  909:  * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+  910   * Dual licensed under the MIT or GPL Version 2 licenses.
+  911:  * http://jquery.org/license
+  912   *
+  913:  * http://docs.jquery.com/UI/Widget
+  914   */
+  915  
+  ...
+ 1415  		//
+ 1416  		// Find the closest javascript page element to gather settings data jsperf test
+ 1417: 		// http://jsperf.com/single-complex-selector-vs-many-complex-selectors/edit
+ 1418  		// possibly naive, but it shows that the parsing overhead for *just* the page selector vs
+ 1419  		// the page and dialog selector is negligable. This could probably be speed up by
+ ....
+ 1704  
+ 1705  
+ 1706: // non-UA-based IE version check by James Padolsey, modified by jdalton - from http://gist.github.com/527683
+ 1707  // allows for inclusion of IE 6+, including Windows Mobile 7
+ 1708  $.extend( $.mobile, { browser: {} } );
+ ....
+ 2367  			// or String.match, it parses the URL into a results array that looks like this:
+ 2368  			//
+ 2369: 			//     [0]: http://jblas:password@mycompany.com:8080/mail/inbox?msg=1234&type=unread#msg-content
+ 2370: 			//     [1]: http://jblas:password@mycompany.com:8080/mail/inbox?msg=1234&type=unread
+ 2371: 			//     [2]: http://jblas:password@mycompany.com:8080/mail/inbox
+ 2372: 			//     [3]: http://jblas:password@mycompany.com:8080
+ 2373  			//     [4]: http:
+ 2374  			//     [5]: //
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile.structure-1.1.1.css:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/jquery.mobile-1.1.1/jquery.mobile.theme-1.1.1.css:
+    1  /*
+    2  * jQuery Mobile Framework 1.1.1 1981b3f5ec22675ae47df8f0bdf9622e7780e90e
+    3: * http://jquerymobile.com
+    4  *
+    5  * Copyright 2012 jQuery Foundation and other contributors
+    6  * Dual licensed under the MIT or GPL Version 2 licenses.
+    7: * http://jquery.org/license
+    8  *
+    9  */
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/walkingSearch.html:
+   21  	
+   22  	$(document).ready(function(){
+   23: 		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+   24  		//初始化隐藏地图
+   25  		$("#walkingSearchMap").hide();
+
+62 matches across 10 files
+
+
+Searching 39 files for "http://api"
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/busSearch.html:
+   21  	
+   22  	$(document).ready(function(){
+   23: 		head.js("https://api.map.baidu.com/api?v=1.2&callback=initialize");
+   24  		//初始化隐藏地图
+   25  		$("#busSearchMap").hide();
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/index.html:
+   17  <script type="text/javascript">
+   18  	$(document).ready(function(){
+   19: 		head.js("https://api.map.baidu.com/api?v=1.2&callback=initialize");
+   20  		bindGetlocation();
+   21  	});
+
+/Users/cuitongliang/Documents/github/cuitongliang.github.io/others/baidumap/walkingSearch.html:
+   21  	
+   22  	$(document).ready(function(){
+   23: 		head.js("https://api.map.baidu.com/api?v=1.2&callback=initialize");
+   24  		//初始化隐藏地图
+   25  		$("#walkingSearchMap").hide();
+
+3 matches across 3 files
