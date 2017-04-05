@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>我要地图</title>
+<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.css" />
+<script src="jquery.mobile-1.1.1/jquery.js"></script>
+<script src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+<script type="text/javascript" src="head.js"></script>
+<style type="text/css">
+	html{height:100%}
+	body,#homePage,#homeContent,#walkingSearchMap{height:90%;margin:0px;padding:0px}
+	#map,#walkingEmpty{height:90%}
+</style>
+<script type="text/javascript">
+	var map;
+	var startPos;
+	var endPos;
+	
+	$(document).ready(function(){
+		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+		//初始化隐藏地图
+		$("#walkingSearchMap").hide();
+		bindSubmit();
+		bindAgainSearch();
+		bindLineNav();
+		bindMapNav();
+	});
+	
+	function initialize() {
+		initMap();
+		initControl();
+		initAutoComplete();
+	}
+	
+	//初始化地图
+	initMap = function(){
+		 var mapOpts = {minZoom:11,maxZoom:17,enableHighResolution:true}
+		  map = new BMap.Map('map',mapOpts);
+		  map.centerAndZoom("北京");
+	}
+	
+	//初始化地图控件
+	initControl = function(){
+		 var navOpts = {anchor:BMAP_ANCHOR_BOTTOM_RIGHT,offset:new BMap.Size(50,40),type:BMAP_NAVIGATION_CONTROL_ZOOM}
+		  var nav = new BMap.NavigationControl(navOpts);
+		  map.addControl(nav);
+		  
+		  var scale = new BMap.ScaleControl();
+		  map.addControl(scale);
+		  
+		  var overOpts = {anchor:BMAP_ANCHOR_TOP_LEFT,offset:new BMap.Size(10,10),size:new BMap.Size(100,100),isOpen:false};
+		  var over = new BMap.OverviewMapControl(overOpts);
+		  map.addControl(over);
+		  
+		  var mapTypeC = new BMap.MapTypeControl();
+		  map.addControl(mapTypeC);
+	}
+	
+	initAutoComplete = function(){
+		var autoCompleteOptsStart = {
+				location:map,
+				input:'walkingSearchStart'
+		}
+		var autoCStart = new BMap.Autocomplete(autoCompleteOptsStart);
+		autoCStart.addEventListener('onconfirm',function(e){
+			var _value = e.item.value;
+			var myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			//本地搜索
+			 var local = new BMap.LocalSearch(map, { 
+				 onSearchComplete:function(){
+					 $("#ShowMsg").click();
+					 $("#dialogList").empty();
+					 localResult =  local.getResults();
+					 var num = local.getResults().getNumPois();
+					 for(var i = 0; i < num;i++) {
+						 if( local.getResults().getPoi(i) != undefined) {
+							 $("#dialogList").append("<li><a onclick=onStartClickFunction("+i+")>" +  local.getResults().getPoi(i).title + "</a></li>");
+						 }
+					 }
+					 $("#dialogList").listview("refresh");
+				 }
+			 });
+			 local.search(myValue);
+		});
+		
+		
+		var autoCompleteOptsEnd = {
+				location:map,
+				input:'walkingSearchEnd'
+		}
+		var autoCEnd = new BMap.Autocomplete(autoCompleteOptsEnd);
+		autoCEnd.addEventListener('onconfirm',function(e){
+			var _value = e.item.value;
+			var myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			
+			var local = new BMap.LocalSearch(map, { 
+				 onSearchComplete:function(){
+					 $("#ShowMsg").click();
+					 $("#dialogList").empty();
+					 localResult =  local.getResults();
+					 var num = local.getResults().getNumPois();
+					 for(var i = 0; i < num;i++) {
+						 if( local.getResults().getPoi(i) != undefined) {
+							 $("#dialogList").append("<li><a onclick=onEndClickFunction("+i+")>" +  local.getResults().getPoi(i).title + "</a></li>");
+						 }
+					 }
+					 $("#dialogList").listview("refresh");
+				 }
+			 });
+			 local.search(myValue);
+		});
+	}
+	
+	bindSubmit = function(){
+		$("#walkingSearchSubmit").click(function(){
+			map.clearOverlays();//清除掉地图上的所有覆盖物
+			//隐藏用户输入表单
+			$("#walkingSearchForm").hide();
+			$("#walkingEmpty").hide();
+			//显示地图
+			$("#walkingSearchMap").show();
+			
+			var walkingRouteOptions = {
+					renderOptions:{
+						map:map,
+						panel:'mapResult',
+						autoViewport:true
+					}
+			}
+			
+			if(startPos == undefined) {
+				var geolocation = new BMap.Geolocation();
+				geolocation.getCurrentPosition(function(r){
+				    if(this.getStatus() == BMAP_STATUS_SUCCESS){
+				        startPos = r.point;
+				        var walking = new BMap.WalkingRoute(map,walkingRouteOptions);
+						walking.search(startPos,endPos);
+				    }
+				    else {
+				        alert('failed'+this.getStatus());
+				    }        
+				})
+			}
+		});
+	}
+	
+	bindAgainSearch = function(){
+		$("#walkingSearchAgain").click(function(){
+			//显示用户输入表单
+			$("#walkingSearchForm").show();
+			$("#walkingEmpty").show();
+			//隐藏地图
+			$("#walkingSearchMap").hide();
+		});
+	}
+	
+	bindLineNav = function(){
+		$("#lineNav").click(function(){
+			 $("#mapResult").show();
+			 $("#map").hide();
+		});
+	}
+	
+	bindMapNav = function(){
+		$("#mapNav").click(function(){
+			$("#map").show();
+			$("#mapResult").hide();
+		});
+	}
+	
+	 onStartClickFunction = function(index){
+		 $("#walkingSearchDialog").dialog('close');
+	     startPos =localResult.getPoi(index).point;
+     }
+	 
+	 onEndClickFunction = function(index){
+		 $("#walkingSearchDialog").dialog('close');
+		 endPos =localResult.getPoi(index).point;
+     }
+
+</script>
+</head>
+<body>
+	<div data-role="page" id="homePage">
+		<div data-role="header">
+			<h1>步行导航</h1>
+			<a href="index.html" data-role="button" data-icon="star" class="ui-btn-left" data-theme="b" rel="external", data-ajax="false">返回</a>
+		</div>
+		<div data-role="content" id="homeContent">
+			<div id="walkingSearchForm">
+				<a href="#walkingSearchDialog"  data-role="button" data-rel="dialog" data-transition="pop"   id="ShowMsg" style="display:none">打开确认框</a>
+				<input type="search" name="search" id="walkingSearchStart" data-mini="true" value=""  placeholder="我的位置"/>
+				<input type="search" name="search" id="walkingSearchEnd" data-mini="true" value=""  placeholder="请输入终点"/>
+				<a href="#" data-role="button" data-mini="true" id="walkingSearchSubmit">提交</a>
+			</div>
+			<div id="walkingSearchMap">
+				<a href="#" data-role="button" data-mini="true" id="walkingSearchAgain">重新搜索</a>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#" id="lineNav">路线</a></li>
+						<li><a href="#" id="mapNav" class="ui-btn-active">地图</a></li>
+					</ul>
+				</div>
+				<div id="map"></div>
+				<div id="mapResult" style="font-size:13px"></div>
+			</div>
+			<div id="walkingEmpty"></div>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" rel="external", data-ajax="false">首页</a></li>
+					<li><a href="busSearch.html" rel="external", data-ajax="false"> 公交导航</a></li>
+					<li><a href="drivingSearch.html" rel="external", data-ajax="false">驾车导航</a></li>
+					<li><a href="#" class="ui-btn-active">步行导航</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div data-role="page"  id="walkingSearchDialog">
+		<div data-role="header">
+			<h1>步行导航选择</h1>
+		</div>
+		<div data-role="content" id="searchInfo">
+			<ul data-role="listview" data-theme="g" id="dialogList">
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

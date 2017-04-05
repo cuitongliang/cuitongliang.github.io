@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>我要地图</title>
+<link rel="stylesheet" href="jquery.mobile-1.1.1/jquery.mobile-1.1.1.css" />
+<script src="jquery.mobile-1.1.1/jquery.js"></script>
+<script src="jquery.mobile-1.1.1/jquery.mobile-1.1.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+<script type="text/javascript" src="head.js"></script>
+<style type="text/css">
+	html{height:100%}
+	body,#homePage,#homeContent{height:90%;margin:0px;padding:0px}
+	#map{height:90%}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		head.js("http://api.map.baidu.com/api?v=1.2&callback=initialize");
+		bindGetlocation();
+	});
+	
+	var map;
+	var autoConfirmValue;
+	function initialize() {
+		initMap();
+		initControl();
+		initAutoComplete();
+	}
+	
+	//初始化地图
+	initMap = function(){
+		 var mapOpts = {minZoom:11,maxZoom:17,enableHighResolution:true}
+		  map = new BMap.Map('map',mapOpts);
+		  map.centerAndZoom("北京");
+	}
+	
+	//初始化地图控件
+	initControl = function(){
+		 var navOpts = {anchor:BMAP_ANCHOR_BOTTOM_RIGHT,offset:new BMap.Size(50,40),type:BMAP_NAVIGATION_CONTROL_ZOOM}
+		  var nav = new BMap.NavigationControl(navOpts);
+		  map.addControl(nav);
+		  
+		  var scale = new BMap.ScaleControl();
+		  map.addControl(scale);
+		  
+		  var overOpts = {anchor:BMAP_ANCHOR_TOP_LEFT,offset:new BMap.Size(10,10),size:new BMap.Size(100,100),isOpen:false};
+		  var over = new BMap.OverviewMapControl(overOpts);
+		  map.addControl(over);
+		  
+		  var mapTypeC = new BMap.MapTypeControl();
+		  map.addControl(mapTypeC);
+	}
+	
+	//初始化自动完成
+	initAutoComplete = function(){
+		var autoCompleteOpts = {
+				location:map,
+				input:'positionSearch'
+		}
+		var autoC = new BMap.Autocomplete(autoCompleteOpts);
+		
+		var lovalSearchOpts = {
+			 	renderOptions:{map: map}
+			}
+		var localSearch = new BMap.LocalSearch(map,lovalSearchOpts);
+		
+		autoC.addEventListener('onconfirm',function(e){
+			var _value = e.item.value;
+			autoConfirmValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+			localSearch.search(autoConfirmValue);
+		});
+		
+	}
+	
+	bindGetlocation = function(){
+		$("#getlocation").click(function(){
+			var geolocation = new BMap.Geolocation();
+			geolocation.getCurrentPosition(function(r){
+				 if(this.getStatus() == BMAP_STATUS_SUCCESS){
+					 var mk = new BMap.Marker(r.point);
+					 map.addOverlay(mk);
+				     map.panTo(r.point);
+				 }else{
+					 alert("获取位置失败，错误码" + this.getStatus());
+				 }
+			});
+		});
+	}
+	
+</script>
+</head>
+<body>
+	<div data-role="page" id="homePage">
+		<div data-role="header">
+			<h1>我要地图</h1>
+			<a id="getlocation" href="#" data-role="button" data-icon="star" class="ui-btn-right" data-theme="b">定位</a>
+		</div>
+		<div data-role="content" id="homeContent">
+			<input type="search" name="search" id="positionSearch" data-mini="true" value="" />
+			<div id="results" style="font-size:13px;margin-top:10px;"></div>
+			<div id="map"></div>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" class="ui-btn-active">首页</a></li>
+					<li><a href="busSearch.html" rel="external", data-ajax="false">公交导航</a></li>
+					<li><a href="drivingSearch.html" rel="external", data-ajax="false">驾车导航</a></li>
+					<li><a href="walkingSearch.html" rel="external", data-ajax="false">步行导航</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
